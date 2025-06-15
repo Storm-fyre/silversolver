@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wordle Solver</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen bg-slate-900 text-slate-100 flex flex-col items-center p-4">
+
+  <h1 class="text-3xl font-bold mb-4">Silver Solver</h1>
+
+  <!-- Guess grid -->
+  <div id="grid" class="grid gap-1 mb-4"
+       style="grid-template-columns: repeat(5, 3rem);"></div>
+
+  <!-- Tip paragraph gets an ID so JS can add red outline on errors -->
+  <p id="tip" class="text-sm text-slate-400 mb-2">
+    <strong>Tip:</strong> tap each letter tile itself to cycle
+    <span class="font-semibold">gray → yellow → green</span>.
+  </p>
+
+  <!-- Controls -->
+  <div class="flex items-center gap-3">
+    <button id="nextBtn"
+            class="px-4 py-2 rounded bg-emerald-500 hover:bg-emerald-600 text-white font-semibold">
+      Suggest&nbsp;Next&nbsp;Guess
+    </button>
+    <span id="spinner"
+          class="hidden animate-spin h-6 w-6 border-2 border-t-transparent rounded-full"></span>
+  </div>
+
+  <p id="status" class="mt-3 h-6 text-emerald-400 font-medium"></p>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>

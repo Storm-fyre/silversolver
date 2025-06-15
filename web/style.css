@@ -1,0 +1,8 @@
+.square{
+  display:flex;justify-content:center;align-items:center;
+  width:3rem;height:3rem;border-radius:.25rem;
+  font-size:1.25rem;font-weight:bold;user-select:none;
+  cursor:pointer;transition:background-color .15s,color .15s}
+.square.gray{background:#334155;color:#e2e8f0}
+.square.yellow{background:#facc15;color:#1e293b}
+.square.green{background:#10b981;color:#fff}
