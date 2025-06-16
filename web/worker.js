@@ -1,7 +1,8 @@
 /* eslint-env worker */
 
 /* ─────────────────────── Word lists & constants ────────────────────── */
-const OPENERS = ['SALET', 'SLATE', 'TRACE', 'CRANE', 'CARTE', 'ROATE', 'REAST'];
+/* reordered list + seconds%7 opener selection */
+const OPENERS = ['SLATE', 'TRACE', 'CRANE', 'CARTE', 'ROATE', 'SALET', 'REAST'];
 
 let guesses, solutions;
 let candidates    = [];
@@ -123,8 +124,9 @@ self.onmessage = async ({ data }) => {
     candidates        = solutions.slice();
     stateStack.length = 0;
 
-    /* Fast: pick one of the seven openers at random */
-    currentGuess = OPENERS[Math.floor(Math.random() * OPENERS.length)];
+    /* pick opener deterministically: seconds % 7 */
+    const sec   = new Date().getSeconds();
+    currentGuess = OPENERS[sec % OPENERS.length];
 
     self.postMessage({
       kind : 'guess',
@@ -153,10 +155,8 @@ self.onmessage = async ({ data }) => {
 
   /* ─── reroll opener ─── */
   if (kind === 'reroll') {
-    let newOpener;
-    do { newOpener = OPENERS[Math.floor(Math.random() * OPENERS.length)]; }
-    while (newOpener === currentGuess);
-    currentGuess = newOpener;
+    const sec   = new Date().getSeconds();
+    currentGuess = OPENERS[sec % OPENERS.length];
     self.postMessage({ kind: 'guess', guess: currentGuess, alts: OPENERS });
     return;
   }

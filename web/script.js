@@ -1,5 +1,54 @@
 /* eslint-env browser */
 
+/* ───────────────── Secret-door logic ───────────────── */
+const silverSpan = document.getElementById('silver');
+const solverSpan = document.getElementById('solver');
+
+const PATTERN   = ['silver','solver','silver','solver','silver','solver'];
+const WINDOW_MS = 3000;
+
+let seqIdx   = 0;
+let seqStart = 0;
+let ultraOn  = false;
+
+function resetSeq () { seqIdx = 0; seqStart = 0; }
+
+function recordTap (name) {
+  const now = Date.now();
+
+  // too slow - restart
+  if (seqIdx && (now - seqStart) > WINDOW_MS) resetSeq();
+
+  if (seqIdx === 0) seqStart = now;
+
+  if (PATTERN[seqIdx] !== name) {          // wrong element
+    resetSeq();
+    return;
+  }
+  seqIdx++;
+
+  if (seqIdx === PATTERN.length) {         // success!
+    unlockUltra();
+    resetSeq();
+  }
+}
+
+silverSpan.addEventListener('click', () => recordTap('silver'));
+solverSpan.addEventListener('click', () => recordTap('solver'));
+
+function unlockUltra () {
+  if (ultraOn) return;
+  ultraOn = true;
+
+  /* change heading */
+  document.getElementById('title').textContent = 'Ultra Solver';
+
+  /* reveal extra controls */
+  backBtn.classList.remove('hidden');
+  anotherBtn.classList.remove('hidden');
+  editBtn.classList.remove('hidden');
+}
+
 /* ───────────────────────── DOM refs ───────────────────────── */
 const grid       = document.getElementById('grid');
 const nextBtn    = document.getElementById('nextBtn');

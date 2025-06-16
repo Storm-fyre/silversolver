@@ -12,7 +12,12 @@
 </head>
 <body class="min-h-screen bg-slate-900 text-slate-100 flex flex-col items-center p-4">
 
-  <h1 class="text-3xl font-bold mb-4">Silver Solver</h1>
+  <!-- Heading is split into two clickable spans for the secret sequence -->
+  <h1 id="title" class="text-3xl font-bold mb-4">
+    <span id="silver" class="cursor-pointer select-none">Silver</span>
+    &nbsp;
+    <span id="solver" class="cursor-pointer select-none">Solver</span>
+  </h1>
 
   <!-- Guess grid -->
   <div id="grid" class="grid gap-1 mb-4"
@@ -24,7 +29,7 @@
     <span class="font-semibold">gray → yellow → green</span>.
   </p>
 
-  <!-- Manual-guess input (hidden until “Edit”) -->
+  <!-- Manual-guess input (hidden until Ultra “Edit”) -->
   <input id="wordInput" type="text" maxlength="5"
          class="hidden mb-2 px-2 py-1 w-40 text-center tracking-widest uppercase rounded bg-slate-700 outline-none placeholder:opacity-40"
          placeholder="TYPE WORD" autocomplete="off" />
@@ -39,18 +44,18 @@
           class="hidden animate-spin h-6 w-6 border-2 border-t-transparent rounded-full"></span>
   </div>
 
-  <!-- Secondary controls -->
+  <!-- Secondary controls (start hidden; revealed when Ultra unlocks) -->
   <div class="flex items-center gap-3 mt-2">
     <button id="backBtn"
-            class="px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold">
+            class="hidden px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold">
       Back
     </button>
     <button id="anotherBtn"
-            class="px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold">
+            class="hidden px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold">
       Another
     </button>
     <button id="editBtn"
-            class="px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold">
+            class="hidden px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold">
       Edit
     </button>
   </div>
