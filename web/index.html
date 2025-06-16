@@ -18,13 +18,18 @@
   <div id="grid" class="grid gap-1 mb-4"
        style="grid-template-columns: repeat(5, 3rem);"></div>
 
-  <!-- Tip paragraph gets an ID so JS can add red outline on errors -->
+  <!-- Tip -->
   <p id="tip" class="text-sm text-slate-400 mb-2">
-    <strong>Tip:</strong> tap each letter tile itself to cycle
+    <strong>Tip:</strong> tap each letter tile to cycle
     <span class="font-semibold">gray → yellow → green</span>.
   </p>
 
-  <!-- Controls -->
+  <!-- Manual-guess input (hidden until “Edit”) -->
+  <input id="wordInput" type="text" maxlength="5"
+         class="hidden mb-2 px-2 py-1 w-40 text-center tracking-widest uppercase rounded bg-slate-700 outline-none placeholder:opacity-40"
+         placeholder="TYPE WORD" autocomplete="off" />
+
+  <!-- Primary control -->
   <div class="flex items-center gap-3">
     <button id="nextBtn"
             class="px-4 py-2 rounded bg-emerald-500 hover:bg-emerald-600 text-white font-semibold">
@@ -32,6 +37,22 @@
     </button>
     <span id="spinner"
           class="hidden animate-spin h-6 w-6 border-2 border-t-transparent rounded-full"></span>
+  </div>
+
+  <!-- Secondary controls -->
+  <div class="flex items-center gap-3 mt-2">
+    <button id="backBtn"
+            class="px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold">
+      Back
+    </button>
+    <button id="anotherBtn"
+            class="px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold">
+      Another
+    </button>
+    <button id="editBtn"
+            class="px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold">
+      Edit
+    </button>
   </div>
 
   <p id="status" class="mt-3 h-6 text-emerald-400 font-medium"></p>
