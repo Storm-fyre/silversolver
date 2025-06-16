@@ -1,5 +1,0 @@
-I need to add few significant updates. Its more like a full overhaul.
-Currently the web app just gives its own suggestions for us to try and takes feedback. I need this web app to give a choice to us to even type a word. after I type the word and give the feedback it will give its next suggestion, I can either accept that suggestion or I can again give my own word.
-I also want to add a back option so that after it pressed everything goes a step back like notjing happened.
-May be we can add 2 small buttons below the main action button, left one being "Back" and right one being "Edit".
-Do not give me code yet. tell me in absolute detail what you understood. if your understanding is correct, then I will ask you to give the code.
